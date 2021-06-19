@@ -18,28 +18,4 @@ def get_quotes():
         get_quotes_response = json.loads(get_quotes_data)
 
     return get_quotes_response
-    #     quote_results = None
-    #     if get_quotes_response:
-
-    #         quote_results_list = get_quotes_response
-    #         quote_results = process_results(quote_results_list)
-
-    # return get_quotes_response
-
-# def process_results(quote_list):
-#     '''
-#     Function  that processes the quote result and transform them to a list of Objects
-#     Args:
-#         quote_list: A list of dictionaries that contain quote details
-#     Returns :
-#         quote_results: A list of movie objects
-#     '''
-#     quote_results = []
-#     for quote_item in quote_list:
-#         id = quote_item.get('id')
-#         quote = quote_item.get('original_title')
-#         author = quote_item.get('overview')
-#         quote_object = Quote(id,author,quote)
-#         quote_results.append(quote_object)
-
-#     return quote_results
+    
