@@ -1,6 +1,8 @@
-from flask import render_template,request,redirect,url_for
+from flask import render_template,request,redirect,url_for,abort
 from ..request import get_quotes
 from . import main
+from flask_login import login_required
+from ..models  import User
 
 #Views
 @main.route("/")
