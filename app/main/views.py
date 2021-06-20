@@ -1,9 +1,9 @@
 from flask import render_template,request,redirect,url_for,abort
 from ..request import get_quotes
 from . import main
-from flask_login import login_required
-from ..models  import User
-from .forms import UpdateProfile
+from flask_login import login_required,current_user
+from ..models  import User, Blog, Comment
+from .forms import UpdateProfile,UploadBlogForm,CommentsForm
 from ..import db,photos
 
 #Views
@@ -53,3 +53,23 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+@main.route('/user/<uname>/upload_blog',methods = ['POST','GET'])
+@login_required
+def upload_blog(uname):
+    user = User.query.filter_by(username = uname ).first()
+    form = UploadBlogForm()
+    if user is None:
+        abort(404)
+
+    if form.validate_on_submit():
+        title = form.title.data
+        blog = form.blog.data
+        user_id = current_user._get_current_object().id
+
+        new_blog_object = Blog(title=title,blog=blog,user_id=user_id)
+        new_blog_object.save_blog()
+
+        return redirect(url_for('main.index'))
+    return render_template('new_blog.html', form = form)
+

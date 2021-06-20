@@ -16,6 +16,14 @@ def get_quotes():
     with urllib.request.urlopen(get_quotes_url) as url:
         get_quotes_data = url.read()
         get_quotes_response = json.loads(get_quotes_data)
+        
+        quotes_results = None
+
+        if get_quotes_response:
+            quote_results_list = get_quotes_response
+            quote_results = quote_results_list            
+
+
 
     return get_quotes_response
     
