@@ -7,10 +7,10 @@ class UpdateProfile(FlaskForm):
     submit = SubmitField('Submit')
 
 class UploadBlogForm(FlaskForm):
-    title = TextAreaField('Blog Title',validators=[Required()])
-    blog =  TextAreaField('your blog',validators=[Required()])
+    title = TextAreaField('Blog',validators=[Required()])
+    blog =  TextAreaField('Author',validators=[Required()])
     submit = SubmitField('Post')
 
 class CommentsForm(FlaskForm):
-    comment = TextAreaField('Blog Title',validators=[Required()])
-    submit = SubmitField('Comment')
+    comment = TextAreaField('Comment',validators=[Required()])
+    submit = SubmitField('Post')
