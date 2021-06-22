@@ -30,24 +30,33 @@
 <li class="jumbotron ">                 
     <div>
         <div class="card-body">
-   <p>{{comment.comment}}</p>
-   <p>Posted by:{{comment.user}}</p>
-    {{comment.posted.strftime('%Y-%m-%d')}}
+
+            <p>{{comment.comment}}</p>
+            <p>Posted by:{{comment.user}}</p>
+            {{comment.posted.strftime('%Y-%m-%d')}}
+        </div>
+    </div>
+
 {%endfor %}
 
 {% endmacro %}
 
 {% macro displayUserBlogs(user_blogs)%}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<h1 style="text-align: center;"> My Blogs</h1>
+<h1 style="text-align: center;">Blogs</h1>
 <ul class="list-index">
-{% for blog in user_blogs %}
-<li class="jumbotron ">                 
-    <div>
-        <div class="card-body">
-    <h4>{{blog.title}}</h4>
-    <p>{{blog.blog}}</p>
-    <a href="{{url_for('main.update',blog_id=blog.id)}}"><button type="button" class="btn btn-light">Update blog</button></a><br> 
-    <a href="{{url_for('main.delete_blog',blog_id=blog.id)}}"><i class="fa fa-trash fa-2x" aria-hidden="true"></i>Delete blog</a>
+    {% for blog in user_blogs %}
+
+    <li class="jumbotron">   
+        <div>
+            <div class="card-body">
+                <h4>{{blog.title}}</h4>
+                <p>{{blog.blog}}</p>
+                <a href="{{url_for('main.update',blog_id=blog.id)}}"><button type="button" class="btn btn-light">Update blog</button></a><br> 
+                 <a href="{{url_for('main.delete_blog',blog_id=blog.id)}}"><i class="fa fa-trash fa-2x" aria-hidden="true"></i>Delete blog</a>
+            </div>
+        </div>
+        </div>
+    </div>
     {%endfor%}
 {% endmacro%}
